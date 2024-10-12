@@ -1,0 +1,46 @@
+.intro-container {
+    background-color: #ededf7;
+}
+
+.intro-content {
+    max-width: 1400px;
+    margin-inline: auto;
+    padding: 160px 0 110px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.intro-content-h3 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #444753;
+    letter-spacing: 1.5px;
+}
+
+.intro-content-h2 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #444753;
+    letter-spacing: 1.5px;
+}
+
+.intro-content-h2-future {
+    color: #512da8;
+}
+
+.intro-content-p-text {
+    font-size: 1.1rem;
+    color: #444753;
+    letter-spacing: 1.2px;
+    margin: 10px 0;
+}
+
+.intro-cute-star {
+    width: 500px;
+    height: 400px;
+    background-image: url(../../assets/introPageStars/cute-star2.PNG);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 450px;
+}

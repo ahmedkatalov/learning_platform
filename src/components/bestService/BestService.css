@@ -1,0 +1,62 @@
+.best-services {
+    max-width: 1400px;
+    margin-inline: auto;
+    padding: 100px 0 80px;
+    text-align: center;
+  }
+  
+  .service-card-h2 {
+    font-size: 1.8rem;
+    color: #241151;
+    font-weight: 500;
+    margin-bottom: 35px;
+  }
+  
+  .services-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .service-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+
+  .service-card-title-box {
+    display: flex;
+    align-items: center;
+  }
+  
+  .service-card-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .service-card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #241151;
+    font-weight: 500;
+  }
+  
+  .service-card-p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .service-card-a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .service-card-a:hover {
+    text-decoration: underline;
+  }
+  

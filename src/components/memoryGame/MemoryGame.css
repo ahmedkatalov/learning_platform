@@ -1,0 +1,56 @@
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(6, 100px);
+    grid-gap: 10px;
+    justify-content: center;
+    position: relative;
+    max-width: 645px;
+    margin-top: 50px;
+    margin-inline: auto;
+    padding: 70px 0;
+  }
+  
+  .div-with-text {
+    position: absolute;
+    left: 150px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .div-with-text.two {
+    left: 60px;
+  }
+
+  .mg-text {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #512da8;;
+  }
+
+  .memory-game-btn {
+    margin-top: 25px;
+    padding: 6px 40px;
+    background-color: #512da8;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .card {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: linear-gradient(to right, #d8cfff, #efd5ff);
+     /* #d3d3fb; */
+     /* lightblue; */
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .mg-card-span {
+    display: inline-block;
+  }

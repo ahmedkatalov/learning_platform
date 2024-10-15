@@ -6,6 +6,9 @@ import CourseCategories from '../components/courseCategories/CourseCategories';
 
 function Intro() {
 
+
+
+
     return (
       <div className='mainContainer'>
         {/* <MemoryGame/> */}

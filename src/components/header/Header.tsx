@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import SignInForm from '../signInForm/SignInForm';
 import RegisterForm from '../registerForm/RegisterForm';
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     const [isSignInModalOpen, setIsSignInModalOpen] = useState<boolean>(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState<boolean>(false);
     
-    const navigate = useNavigate();
+    
 
     const openSignInModal = () => {
         setIsSignInModalOpen(true);
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                             <div className="modal-overlay" onClick={closeModal}>
                                 <div className="modal-content-for-reg" onClick={(e) => e.stopPropagation()}>
                                     <button className="close-btn" onClick={closeModal}>X</button>
-                                    <RegisterForm />
+                                    <RegisterForm  closeModal={closeModal} />
                                 </div>
                             </div>
                         )}

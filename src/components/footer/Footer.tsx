@@ -1,13 +1,13 @@
-import React from 'react';
+import { FC } from 'react';
 import './Footer.css';
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
     
     return (
         <footer className="footer-container">
         <div className='footer-content'>
             <div className="footer-section logo-description">
-                <div className="logo">
+                <div className="footer-logo">
                     <h4 className='foo-headline'>SkillSprint</h4>
                     <p className='foo-inspo'>
                         "Goal and self-discipline are the foundation <br/>

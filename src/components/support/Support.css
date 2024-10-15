@@ -1,0 +1,40 @@
+.support-container {
+    max-width: 1400px;
+    margin-inline: auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.support-content {
+    margin: 90px 0;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.support-h2-text {
+    letter-spacing: 1.5px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #396464;
+}
+
+.support-cute-star {
+    margin-right: 50px;
+    width: 350px;
+    height: 330px;
+    background-image: url(../../assets/supportStar/cute-star7.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 350px;
+}
+
+.support-p-text {
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    color: #396464;
+}

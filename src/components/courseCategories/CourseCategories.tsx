@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import './CourseCategories.css';
 
@@ -29,7 +29,7 @@ const courseCategories: CourseCategory[] = [
   { id: 8, title: 'Art & Craft', courseCount: '205+ Courses', icon: Icon8},
 ];
 
-const CourseCategories: React.FC = () => {
+const CourseCategories: FC = () => {
   return (
     <section className='course-categories'>
       <h2 className='category-h2-heading'>Explore Courses by Categories</h2>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, MouseEvent } from "react";
+import { FC, useState, useRef, MouseEvent } from "react";
 
 import './SignInForm.css';
 
@@ -7,7 +7,7 @@ interface StyleState {
   right: { [key: string]: string };
 }
 
-const SignInForm: React.FC = () => {
+const SignInForm: FC = () => {
   const usernameRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 

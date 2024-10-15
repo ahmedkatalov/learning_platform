@@ -1,11 +1,11 @@
 .game-board {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(6, 100px);
     grid-gap: 10px;
     justify-content: center;
-    position: relative;
     max-width: 645px;
-    margin-top: 50px;
+    margin: 130px 0 200px;
     margin-inline: auto;
     padding: 70px 0;
   }

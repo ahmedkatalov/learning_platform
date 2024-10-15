@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 
 import './IntroAdd.css';
 
-const IntroAdd: React.FC = () => {
+const IntroAdd: FC = () => {
     return (
         <div className='intro-container'>
             <div className='intro-content'>

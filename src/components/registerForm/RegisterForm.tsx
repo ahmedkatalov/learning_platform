@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 
 import './RegisterForm.css';
 
-const RegisterForm: React.FC = () => {
+const RegisterForm: FC = () => {
   const [isActive, setIsActive] = useState(false);
 
   const handleSignUpClick = () => {

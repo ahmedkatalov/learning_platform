@@ -1,0 +1,113 @@
+.sidebar {
+    grid-area: sidebar;
+    margin: 90px 0 0 10px;
+    width: 200px;
+    height: 80%;
+    background-color: #191919;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    position: fixed;
+    border-radius: 15px;
+    z-index: 1000;
+  }
+  
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-logo {
+    margin-left: 15px;
+    font-size: 2rem;
+    background:  linear-gradient(to right, #A38FFD, #D38FFD);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  
+  .sidebar-h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    background:  linear-gradient(to right, #A38FFD, #D38FFD);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  
+  .sidebar-menu {
+    margin-top: 20px;
+  }
+
+  .menu-icon,
+  .sidebar-footer-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #ffff;
+  }
+  
+  .menu-item,
+  .sidebar-footer-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 1rem;
+    color: #ffff;
+  }
+  
+  .menu-item.sidebar-active {
+    background-color: #333333;
+    border-radius: 8px;
+  }
+  
+  .menu-item:hover {
+    background-color: #292929;
+    border-radius: 8px;
+  }
+
+  .sidebar-footer-item:hover {
+    background-color: #292929;
+    border-radius: 8px;
+  }
+  
+  .badge {
+    background-color: #a56eff;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 10px;
+    margin-left: auto;
+    font-size: 0.9rem;
+  }
+  
+  .sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid #333333;
+  }  
+
+
+  /* show/hide controll */
+
+  .sidebar {
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar.collapsed {
+    width: 60px;
+  }
+  
+  /* .sidebar.collapsed .menu-item {
+    justify-content: center;
+  } */
+  
+  .sidebar .sidebar-header {
+    justify-content: space-between;
+  }
+  
+  .sidebar .toggle-btn {
+    background: none;
+    color: #A38FFD;
+    /* border: none; */
+    /* font-size: 1.2rem; */
+  }
+  

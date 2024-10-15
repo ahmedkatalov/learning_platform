@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Card from './Card';
 
 import './MemoryGame.css';
@@ -6,7 +6,7 @@ import './MemoryGame.css';
 const initialCards = ['🦉', '🎮', '🍎', '🍌', '🍒', '🍇', '📸', '🩰', '🎨', '🦄', '🫧', '👩🏻‍💻',
                       '🦉', '🎮', '🍎', '🍌', '🍒', '🍇', '📸', '🩰', '🎨', '🦄', '🫧', '👩🏻‍💻'];
 
-const MemoryGame: React.FC = () => {
+const MemoryGame: FC = () => {
   const [cards, setCards] = useState<string[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);

@@ -2,7 +2,8 @@ import IntroAdd from '../components/introAdd/IntroAdd';
 import BestServices from '../components/bestService/BestService';
 import NewsLetter from '../components/newsletter/NewsLetter';
 import CourseCategories from '../components/courseCategories/CourseCategories';
-// import MemoryGame from '../components/memoryGame/MemoryGame';
+
+import './style.css';
 
 function Intro() {
 
@@ -10,8 +11,7 @@ function Intro() {
 
 
     return (
-      <div className='mainContainer'>
-        {/* <MemoryGame/> */}
+      <div className='introContainer'>
         <IntroAdd/>
         <BestServices/>
         <CourseCategories/>

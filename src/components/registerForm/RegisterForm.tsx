@@ -1,14 +1,17 @@
+
 import React, { useState } from 'react';
 import { auth, googleProvider } from "../../fireBase/fireStore";
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { useNavigate} from 'react-router-dom';
 import './RegisterForm.css';
 
 interface RegisterFormProps {
   closeModal: () => void;  // Пропс, который закрывает модальное окно
 }
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
 
+const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
+  const navifate = useNavigate()
   const [isActive, setIsActive] = useState(false);
   const [role, setRole] = useState<string>("teacher");
   const [name, setName] = useState<string>("");
@@ -25,6 +28,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       localStorage.setItem("role", role);
+      navifate("./home")
       closeModal();  // Закрываем модальное окно только при успешной регистрации
     } catch (error) {
       setErrorMessage("Failed to register. Please try again.");

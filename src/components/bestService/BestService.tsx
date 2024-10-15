@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import './BestService.css'
 
@@ -10,7 +10,7 @@ interface ServiceCardProps {
   bgColor: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, linkText, bgColor }) => {
+const ServiceCard: FC<ServiceCardProps> = ({ icon, title, description, linkText, bgColor }) => {
   return (
     <div className="service-card" style={{ backgroundColor: bgColor }}>
       <div className="service-card-title-box">

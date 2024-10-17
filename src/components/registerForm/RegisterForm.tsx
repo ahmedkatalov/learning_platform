@@ -1,41 +1,62 @@
 
 import React, { useState } from 'react';
 import { auth, googleProvider } from "../../fireBase/fireStore";
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import { useNavigate} from 'react-router-dom';
 import './RegisterForm.css';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setRole } from '../../redux/role/roleSlice';
+import { RootState } from '@reduxjs/toolkit/query';
 interface RegisterFormProps {
   closeModal: () => void;  // Пропс, который закрывает модальное окно
 }
 
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
-  const navifate = useNavigate()
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
-  const [role, setRole] = useState<string>("teacher");
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);  // Для сообщений об ошибке
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  
+  const dispatch = useDispatch()
+  const role = useSelector((state: RootState) => state.role.role)
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
+  
     if (!email || !password) {
       setErrorMessage("Email and password are required");
       return;
     }
+  
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      // Создаем нового пользователя
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user; // Получаем объект пользователя
+  
+      // Если имя указано обновляем профиль пользователя
+      if (name && user) {
+        await updateProfile(user, {
+          displayName: name, // имя пользователя
+        });
+      }
+  
+      // Сохраняем роль в локальном хранилище
       localStorage.setItem("role", role);
-      navifate("./home")
-      closeModal();  // Закрываем модальное окно только при успешной регистрации
-    } catch (error) {
+  
+      
+      navigate("./home");
+  
+    
+      closeModal();
+    } catch (error: any) {
       setErrorMessage("Failed to register. Please try again.");
       console.error("Registration error:", error);
     }
-  }
-
+  };
+  console.log(role)
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -48,18 +69,21 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
   };
 
   const handleSignUpClick = (selectedRole: string) => {
-    setRole(selectedRole);
+    dispatch(setRole(selectedRole))
     setIsActive(true);
     setName("")
     setEmail("")
   };
 
   const handleSignInClick = (selectedRole: string) => {
-    setRole(selectedRole);
+    dispatch(setRole(selectedRole))
     setIsActive(false);
     setName("")
     setEmail("")
   };
+
+
+  
 
   return (
     <div className={`reg-form-container ${isActive ? 'active' : ''}`} id="container">
@@ -135,6 +159,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
       </div>
     </div>
   );
+  
 };
 
 export default RegisterForm;

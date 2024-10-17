@@ -1,8 +1,8 @@
-
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
-
+import { auth } from "../../fireBase/fireStore"; // Ваш импорт auth
+import { onAuthStateChanged, User } from 'firebase/auth'; // Импортируем необходимые методы и типы
 
 import SignInForm from '../signInForm/SignInForm';
 import RegisterForm from '../registerForm/RegisterForm';
@@ -26,8 +26,17 @@ const Header: FC = () => {
 
     const [isSignInModalOpen, setIsSignInModalOpen] = useState<boolean>(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState<boolean>(false);
-    
-    
+    const [user, setUser] = useState<User | null>(null); // Состояние для хранения информации о пользователе
+
+    useEffect(() => {
+        // Подписываемся на изменения состояния пользователя
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+
+        // Отписываемся от слушателя при размонтировании компонента
+        return () => unsubscribe();
+    }, []);
 
     const openSignInModal = () => {
         setIsSignInModalOpen(true);
@@ -76,58 +85,63 @@ const Header: FC = () => {
                         Contact
                     </NavLink>
                 </div>
+                
+                {/* Если пользователь авторизован, показываем "fsf", иначе - кнопки для регистрации и входа */}
+                {user ? (
+                    "fsf"
+                ) : (
+                    <div className='header-btns'>
+                        <button className="sign-in-btn" onClick={openSignInModal}>
+                            Sign in
+                        </button>
 
-                <div className='header-btns'>
-                    <button className="sign-in-btn" onClick={openSignInModal}>
-                        Sign in
-                    </button>
-
-                    <Transition in={isSignInModalOpen} timeout={duration} unmountOnExit>
-                        {(state) => (
-                            <div
-                                className="modal-overlay"
-                                onClick={closeModal}
-                                style={{
-                                    ...defaultStyle,
-                                    ...transitionStyles[state],
-                                }}
-                            >
+                        <Transition in={isSignInModalOpen} timeout={duration} unmountOnExit>
+                            {(state) => (
                                 <div
-                                    className="modal-content"
-                                    onClick={(e) => e.stopPropagation()}
+                                    className="modal-overlay"
+                                    onClick={closeModal}
+                                    style={{
+                                        ...defaultStyle,
+                                        ...transitionStyles[state],
+                                    }}
                                 >
-                                    <button className="close-btn" onClick={closeModal}>X</button>
-                                    <SignInForm />
+                                    <div
+                                        className="modal-content"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <button className="close-btn" onClick={closeModal}>X</button>
+                                        <SignInForm />
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </Transition>
+                            )}
+                        </Transition>
 
-                    <button className="reg-btn" onClick={openRegisterModal}>
-                        Sign up
-                    </button>
+                        <button className="reg-btn" onClick={openRegisterModal}>
+                            Sign up
+                        </button>
 
-                    <Transition in={isRegisterModalOpen} timeout={duration} unmountOnExit>
-                        {(state) => (
-                            <div
-                                className="modal-overlay"
-                                onClick={closeModal}
-                                style={{
-                                    ...defaultStyle,
-                                    ...transitionStyles[state],
-                                }}
-                            >
+                        <Transition in={isRegisterModalOpen} timeout={duration} unmountOnExit>
+                            {(state) => (
                                 <div
-                                    className="modal-content-for-reg"
-                                    onClick={(e) => e.stopPropagation()}
+                                    className="modal-overlay"
+                                    onClick={closeModal}
+                                    style={{
+                                        ...defaultStyle,
+                                        ...transitionStyles[state],
+                                    }}
                                 >
-                                    <button className="close-btn" onClick={closeModal}>X</button>
-                                    <RegisterForm  closeModal={closeModal} />
+                                    <div
+                                        className="modal-content-for-reg"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <button className="close-btn" onClick={closeModal}>X</button>
+                                        <RegisterForm closeModal={closeModal} />
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </Transition>
-                </div>
+                            )}
+                        </Transition>
+                    </div>
+                )}
             </div>
         </header>
     );

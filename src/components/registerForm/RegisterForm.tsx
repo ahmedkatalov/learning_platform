@@ -60,7 +60,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      localStorage.setItem('role', role);  // default role for Google login
+      localStorage.setItem('role', role);  
       closeModal();  // Закрываем модальное окно только при успешной авторизации через Google
     } catch (error) {
       setErrorMessage("Google sign-in failed. Please try again.");

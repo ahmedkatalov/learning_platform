@@ -9,6 +9,7 @@ import Support from './components/support/Support';
 import ChatComponent from './components/chatMessages/Messages';
 import { auth } from './fireBase/fireStore'; // Импортируем auth
 import { onAuthStateChanged, signOut, User } from 'firebase/auth'; // Добавляем signOut для выхода
+import AboutUs from './pages/AboutUs';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null); // Состояние для хранения пользователя
@@ -50,6 +51,7 @@ const App: React.FC = () => {
           <Route path="/chat" element={ <ChatComponent/>} />
           <Route path="/memoryGame" element={<MemoryGame />} />
           <Route path="/support" element={<Support />} />
+          <Route path='/aboutus' element={<AboutUs />}/>
         </Route>
       </Routes>
        

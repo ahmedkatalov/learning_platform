@@ -72,12 +72,14 @@ const Header: FC = () => {
                     >
                         Courses
                     </NavLink>
+
                     <NavLink
-                        to="/a"
+                        to="/aboutus"
                         className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
                     >
                         About Us
                     </NavLink>
+
                     <NavLink
                         to="/a"
                         className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}

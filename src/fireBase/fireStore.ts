@@ -12,10 +12,8 @@ const firebaseConfig = {
   measurementId: "G-1MJM018KC7"
 };
 
-// Инициализация Firebase
 const app = initializeApp(firebaseConfig);
 
-// Экспорт сервисов Firebase
-export const auth = getAuth(app); // Экспорт авторизации
-export const googleProvider = new GoogleAuthProvider(); // Экспорт провайдера Google
-export const db = getFirestore(app); // Экспорт Firestore
+export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);

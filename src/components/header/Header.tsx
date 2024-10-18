@@ -1,8 +1,8 @@
 import { FC, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
-import { auth } from "../../fireBase/fireStore"; // Ваш импорт auth
-import { onAuthStateChanged, User } from 'firebase/auth'; // Импортируем необходимые методы и типы
+import { auth } from "../../fireBase/fireStore";
+import { onAuthStateChanged, User } from 'firebase/auth';
 
 import SignInForm from '../signInForm/SignInForm';
 import RegisterForm from '../registerForm/RegisterForm';
@@ -26,15 +26,13 @@ const Header: FC = () => {
 
     const [isSignInModalOpen, setIsSignInModalOpen] = useState<boolean>(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState<boolean>(false);
-    const [user, setUser] = useState<User | null>(null); // Состояние для хранения информации о пользователе
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        // Подписываемся на изменения состояния пользователя
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         });
 
-        // Отписываемся от слушателя при размонтировании компонента
         return () => unsubscribe();
     }, []);
 
@@ -60,37 +58,31 @@ const Header: FC = () => {
                 </div>
 
                 <div className='nav-block'>
-                    <NavLink
-                        to="/home"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/home"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Home
                     </NavLink>
-                    <NavLink
-                        to="/a"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/a"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Courses
                     </NavLink>
-                    <NavLink
-                        to="/a"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/a"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         About Us
                     </NavLink>
-                    <NavLink
-                        to="/a"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/a"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Contact
                     </NavLink>
                 </div>
                 
-                {/* Если пользователь авторизован, показываем "fsf", иначе - кнопки для регистрации и входа */}
                 {user ? (
-                    "fsf"
+                    <div>
+                        <div className='header-user-pic'></div>
+                    </div>
                 ) : (
                     <div className='header-btns'>
+
                         <button className="sign-in-btn" onClick={openSignInModal}>
                             Sign in
                         </button>
@@ -103,12 +95,10 @@ const Header: FC = () => {
                                     style={{
                                         ...defaultStyle,
                                         ...transitionStyles[state],
-                                    }}
-                                >
+                                    }}>
                                     <div
                                         className="modal-content"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
+                                        onClick={(e) => e.stopPropagation()}>
                                         <button className="close-btn" onClick={closeModal}>X</button>
                                         <SignInForm />
                                     </div>
@@ -122,18 +112,14 @@ const Header: FC = () => {
 
                         <Transition in={isRegisterModalOpen} timeout={duration} unmountOnExit>
                             {(state) => (
-                                <div
-                                    className="modal-overlay"
+                                <div className="modal-overlay"
                                     onClick={closeModal}
                                     style={{
                                         ...defaultStyle,
                                         ...transitionStyles[state],
-                                    }}
-                                >
-                                    <div
-                                        className="modal-content-for-reg"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
+                                    }}>
+                                    <div className="modal-content-for-reg"
+                                         onClick={(e) => e.stopPropagation()}>
                                         <button className="close-btn" onClick={closeModal}>X</button>
                                         <RegisterForm closeModal={closeModal} />
                                     </div>

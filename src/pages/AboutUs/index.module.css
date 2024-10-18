@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.aboutus {
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.maincontainer {
+  margin: 30px;
+  font-size: 18px;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.teamMember {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd; 
+    background-color: #ddd;
+    border-radius: 15px;
+    transition: border 0.5s ease; 
+}
+
+h2 {
+  font-size: 1.8em;
+  margin: 10px 0;
+  cursor: pointer;
+  color: #512da8;
+  transition: color 0, 5 ease;
+}
+
+h2:hover {
+  color: #005bb5;
+}
+
+/*.description {
+  font-size: 20px;
+  color: #666;
+  padding: 0 20px;
+}*/
+
+p {
+  line-height: 1.6;
+}
+.description {
+    font-size: 20px;
+    color: #666;
+    padding: 0 20px;
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.5s ease-in-out; 
+}
+  
+  .open {
+    border: 1px solid transparent;
+    max-height: 200px; 
+}

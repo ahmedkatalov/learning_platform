@@ -1,17 +1,27 @@
 import CoursesSection from '../components/coursesSection/CoursesSection';
-import Sidebar from '../components/sideBar/SideBar';
 import Greeting from '../components/greeting/Greeting';
 
-import './style.css';
+interface Course {
+  id: number;
+  title: string;
+  image: string;
+  level: string;
+}
 
-function Home() {
-    return (
-        <div className='home-container'>
-            <Sidebar />
-            <Greeting />
-            <CoursesSection />
-        </div>
-    )
+interface HomeProps {
+  savedCourses: Course[];
+  onSaveCourse: (course: Course) => void;
+}
+
+function Home({ savedCourses, onSaveCourse }: HomeProps) {
+  return (
+    <div className='home-container'>
+      <Greeting />
+      <CoursesSection 
+        savedCourses={savedCourses}
+        onSaveCourse={onSaveCourse} />
+    </div>
+  );
 }
 
 export default Home;

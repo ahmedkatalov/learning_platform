@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import { auth, googleProvider } from "../../fireBase/fireStore";
 import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import { useNavigate} from 'react-router-dom';
-import './RegisterForm.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRole } from '../../redux/role/roleSlice';
-import { RootState } from '@reduxjs/toolkit/query';
+import { RootState } from '../../redux/role/store';
+
+import './RegisterForm.css';
 interface RegisterFormProps {
-  closeModal: () => void;  // Пропс, который закрывает модальное окно
+  closeModal: () => void;
 }
+
 
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
@@ -32,18 +34,15 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
     }
   
     try {
-      // Создаем нового пользователя
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user; // Получаем объект пользователя
+      const user = userCredential.user;
   
-      // Если имя указано обновляем профиль пользователя
       if (name && user) {
         await updateProfile(user, {
-          displayName: name, // имя пользователя
+          displayName: name,
         });
       }
   
-      // Сохраняем роль в локальном хранилище
       localStorage.setItem("role", role);
   
       
@@ -61,7 +60,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
     try {
       await signInWithPopup(auth, googleProvider);
       localStorage.setItem('role', role);  
-      closeModal();  // Закрываем модальное окно только при успешной авторизации через Google
+      closeModal();
     } catch (error) {
       setErrorMessage("Google sign-in failed. Please try again.");
       console.error("Google sign-in error:", error);
@@ -110,7 +109,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
           <input value={password} onChange={(e) => setPassword(e.target.value)} className='reg-form-input' type="password" placeholder="Password" />
           <button onClick={handleSignUp} className='reg-form-btn' type="submit">Sign Up</button>
 
-          {/* Отображение сообщения об ошибке */}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
       </div>
@@ -138,7 +136,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
           <input value={password} onChange={(e) => setPassword(e.target.value)} className='reg-form-input' type="password" placeholder="Password" />
           <button onClick={handleSignUp} className='reg-form-btn' type="submit">Sign Up</button>
 
-          {/* Отображение сообщения об ошибке */}
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
       </div>

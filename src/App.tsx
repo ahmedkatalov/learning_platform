@@ -1,61 +1,78 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+
+import { auth } from './fireBase/fireStore'; 
+import { onAuthStateChanged, signOut, User } from 'firebase/auth';
+
 import MainLayout from './components/MainLayout';
 import Intro from './pages/Intro';
 import Home from './pages/Home';
+import MyCourses from './components/myCourses/MyCourses';
 import Test from './components/testFor/Test';
+import ChatComponent from './components/chatMessages/Messages';
 import MemoryGame from './components/memoryGame/MemoryGame';
 import Support from './components/support/Support';
-import ChatComponent from './components/chatMessages/Messages';
-import { auth } from './fireBase/fireStore'; // Импортируем auth
-import { onAuthStateChanged, signOut, User } from 'firebase/auth'; // Добавляем signOut для выхода
 
 
 
-const App: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null); // Состояние для хранения пользователя
-  const [loading, setLoading] = useState(true); // Состояние загрузки
+
+
+interface Course {
+  id: number;
+  title: string;
+  image: string;
+  level: string;
+}
+
+const App: FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [savedCourses, setSavedCourses] = useState<Course[]>([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false); // Загрузка завершена
+      setLoading(false);
       if (!currentUser) {
-        navigate('/'); // Перенаправляем на главную, если пользователь не авторизован
+        navigate('/');
       }
     });
 
-    // Отписываемся от слушателя при размонтировании компонента
     return () => unsubscribe();
   }, [navigate]);
 
-  // Функция для выхода из аккаунта
   const handleLogout = async () => {
     await signOut(auth);
     setUser(null);
-    navigate('/'); // Перенаправляем на главную после выхода
+    navigate('/');
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Показываем загрузку, пока проверяется авторизация
+    return <div>Loading...</div>;
   }
+
+  const handleSaveCourse = (course: Course) => {
+    if (!savedCourses.some((savedCourse) => savedCourse.id === course.id)) {
+      setSavedCourses((prev) => [...prev, course]);
+    }
+  };
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<MainLayout isAuthenticated={!!user} />}>
           <Route index element={<Intro />} />
-          {/* Если пользователь авторизован, показываем Home, иначе показываем Intro */}
-          <Route path="/home"  element={user ? <Home /> :  <Intro />}  />
-          <Route path="/test" element={<Test />} />
-          <Route path="/chat" element={ <ChatComponent/>} />
-          <Route path="/memoryGame" element={<MemoryGame />} />
-          <Route path="/support" element={<Support />} />
+          <Route path="/home" element={<Home savedCourses={savedCourses} onSaveCourse={handleSaveCourse} />} />
+          <Route path="/mycourses" element={<MyCourses savedCourses={savedCourses} />} />
+          <Route path="/test" element={user ? <Test /> : <Intro />} />
+          <Route path="/chat" element={user ? <ChatComponent /> : <Intro />} />
+          <Route path="/memoryGame" element={user ? <MemoryGame /> : <Intro />} />
+          <Route path="/support" element={user ? <Support /> : <Intro />} />
         </Route>
       </Routes>
-       
-      {/* Кнопка для выхода из аккаунта, будет отображаться, если пользователь авторизован */}
+
       {user && (
         <button onClick={handleLogout} style={{ position: 'fixed', bottom: '10px', right: '10px' }}>
           Выйти

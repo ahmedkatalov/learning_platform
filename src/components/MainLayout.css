@@ -1,0 +1,16 @@
+.main-layout {
+    margin-inline: auto;
+}
+
+.layout-body {
+    position: relative;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-areas: 
+    'sidebar main'
+    'sidebar main';
+}
+
+.main-content {
+    grid-area: main;
+}

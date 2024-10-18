@@ -1,11 +1,10 @@
 .greeting-container {
-    grid-area: greeting;
     width: 100%;
     box-shadow: 0 10px 1px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-inline: auto;
     margin-top: 150px;
-    border-bottom: 2px solid #61616194;
+    border-bottom: 2px solid #6161614e;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -7,6 +7,9 @@ import './style.css';
 
 function Intro() {
 
+
+
+
     return (
       <div className='introContainer'>
         <IntroAdd/>

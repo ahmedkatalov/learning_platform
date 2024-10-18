@@ -1,10 +1,12 @@
 import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector} from 'react-redux';
 import './Sidebar.css';
+import { RootState } from '@reduxjs/toolkit/query';
 
 const Sidebar: FC = () => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const role = useSelector((state: RootState) => state.role.role)
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -33,15 +35,24 @@ const Sidebar: FC = () => {
             <i className="menu-icon fa-solid fa-file-circle-question"></i>
             {!isCollapsed && 'Take a Test'}
           </NavLink>
+        {/* Пример, отображение кладвки в зависимости от роли аккаунта  */}
+          {
+            role === "teacher" ? 
           <li className="menu-item">
              <i className="menu-icon fa-solid fa-chalkboard-user"></i>
              {!isCollapsed && 'Teachers'}
-          </li>
+          </li> : ""
+          }
+          {/* ---------------------------------------------------------------------- */}
+          {/* ---------------------------------------------------------------------- */}
+          {/* ---------------------------------------------------------------------- */}
+          <NavLink to="/chat">
           <li className="menu-item">
             <i className="menu-icon fa-regular fa-comment"></i>
             {!isCollapsed && 'Messages'}
             {!isCollapsed && <span className="badge">8</span>}
           </li>
+          </NavLink>
           <NavLink to="/memoryGame" 
                    className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
             <i className="menu-icon fa-solid fa-layer-group"></i>

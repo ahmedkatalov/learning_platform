@@ -1,5 +1,6 @@
 import { FC, useState, useRef, MouseEvent } from "react";
-
+import { auth } from "../../fireBase/fireStore";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import './SignInForm.css';
 
 interface StyleState {
@@ -10,6 +11,9 @@ interface StyleState {
 const SignInForm: FC = () => {
   const usernameRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const [eyeStyle, setEyeStyle] = useState<StyleState>({
     left: { left: "0.7rem", top: "0.7rem" },
@@ -34,7 +38,6 @@ const SignInForm: FC = () => {
   };
 
   const handlePasswordFocus = () => {
-    console.log("Password input focused");
     setHandStyle({
       left: { height: "6.56rem", top: "3.87rem", left: "11.75rem", transform: "rotate(-155deg)" },
       right: { height: "6.56rem", top: "3.87rem", right: "11.75rem", transform: "rotate(155deg)" }
@@ -45,29 +48,27 @@ const SignInForm: FC = () => {
     });
   };
 
-  const handleBlur = (e: MouseEvent<HTMLDivElement>) => {
-    const clickedElement = e.target as HTMLElement;
-    if (clickedElement !== usernameRef.current && clickedElement !== passwordRef.current) {
-      setEyeStyle({
-        left: { left: "0.8rem", top: "0.8rem" },
-        right: { right: "0.8rem", top: "0.8rem" }
-      });
-
-      setHandStyle({
-        left: { height: "2.81rem", top: "8.4rem", left: "7.5rem", transform: "rotate(0deg)" },
-        right: { height: "2.81rem", top: "8.4rem", right: "7.5rem", transform: "rotate(0deg)" }
-      });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setEmail("");
+      setPassword("");
+    } catch (e: any) {
+      setError(e.message);
     }
   };
 
   return (
-    <div className="container" onClick={handleBlur}>
-      <form className="panda-form">
-        <label className="panda-form_label" htmlFor="username">Username:</label>
+    <div className="container">
+      <form className="panda-form" onSubmit={handleSubmit}>
+        <label className="panda-form_label" htmlFor="username">Email:</label>
         <input
           className="panda-form_input"
-          type="text"
+          type="email"
           id="username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Username here..."
           ref={usernameRef}
           onFocus={handleUsernameFocus}
@@ -77,11 +78,14 @@ const SignInForm: FC = () => {
           className="panda-form_input"
           type="password"
           id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Password here..."
           ref={passwordRef}
           onFocus={handlePasswordFocus}
         />
-        <button className="panda-form_btn" type="button">Sign in</button>
+        <p>{error ? error : ""}</p>
+        <button className="panda-form_btn" type="submit">Sign in</button>
       </form>
       <div className="ear-l"></div>
       <div className="ear-r"></div>

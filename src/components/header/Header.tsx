@@ -88,7 +88,7 @@ const Header: FC = () => {
                 
                 {/* Если пользователь авторизован, показываем "fsf", иначе - кнопки для регистрации и входа */}
                 {user ? (
-                    "fsf"
+                user.displayName
                 ) : (
                     <div className='header-btns'>
                         <button className="sign-in-btn" onClick={openSignInModal}>

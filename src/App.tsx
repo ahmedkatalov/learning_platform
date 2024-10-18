@@ -10,6 +10,8 @@ import ChatComponent from './components/chatMessages/Messages';
 import { auth } from './fireBase/fireStore'; // Импортируем auth
 import { onAuthStateChanged, signOut, User } from 'firebase/auth'; // Добавляем signOut для выхода
 
+
+
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null); // Состояние для хранения пользователя
   const [loading, setLoading] = useState(true); // Состояние загрузки

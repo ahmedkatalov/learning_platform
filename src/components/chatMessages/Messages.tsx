@@ -1,12 +1,12 @@
 import { addDoc, collection, Timestamp, orderBy, query, onSnapshot } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { auth, db } from "../../fireBase/fireStore"
+
 import "./Message.css"
 
 const ChatComponent: React.FC = () => {
     const [message, setMessage] = useState<string>("")
     const [messages, setMessages] = useState<any[]>([])
-
     const sendMessage = async (e: React.FormEvent) => {
         e.preventDefault(); // Предотвращаем перезагрузку страницы
         if (message.trim() !== "") {
@@ -23,7 +23,7 @@ const ChatComponent: React.FC = () => {
             }
         }
     }
-
+   
     useEffect(() => {
         const q = query(collection(db, 'messages'), orderBy('createdAt', 'asc'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -36,7 +36,7 @@ const ChatComponent: React.FC = () => {
         return () => unsubscribe();
     }, []);
 
-
+  
     return (
         <> 
             <div className="message-container">

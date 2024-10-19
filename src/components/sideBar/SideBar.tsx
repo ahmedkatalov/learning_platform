@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector} from 'react-redux';
-import { RootState } from '../../redux/role/store';
+import { RootState } from '../../redux/store';
 
 import './Sidebar.css';
 
@@ -36,10 +36,11 @@ const Sidebar: FC = () => {
           </NavLink>
           {
             role === "teacher" ? 
-          <li className="menu-item">
+          <NavLink to="/addcourse" 
+                   className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
              <i className="menu-icon fa-solid fa-chalkboard-user"></i>
              {!isCollapsed && 'Add Course'}
-          </li> : ""
+          </NavLink> : ""
           }
           <NavLink to="/chat" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
             <i className="menu-icon fa-regular fa-comment"></i>

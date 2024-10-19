@@ -5,7 +5,7 @@ import { auth } from "../../fireBase/fireStore";
 import { onAuthStateChanged, User } from 'firebase/auth';
 
 import SignInForm from '../signInForm/SignInForm';
-import RegisterForm from '../registerForm/RegisterForm';
+import SignUpForm from '../signUpForm/SignUpForm';
 
 import './Header.css';
 
@@ -62,7 +62,7 @@ const Header: FC = () => {
                              className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Home
                     </NavLink>
-                    <NavLink to="/a"
+                    <NavLink to="/courses"
                              className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Courses
                     </NavLink>
@@ -121,7 +121,7 @@ const Header: FC = () => {
                                     <div className="modal-content-for-reg"
                                          onClick={(e) => e.stopPropagation()}>
                                         <button className="close-btn" onClick={closeModal}>X</button>
-                                        <RegisterForm closeModal={closeModal} />
+                                        <SignUpForm closeModal={closeModal} />
                                     </div>
                                 </div>
                             )}

@@ -11,12 +11,16 @@ import Courses from './components/courses/Courses';
 import CourseDetails from './components/courseDetails/CourseDetails';
 import Home from './pages/Home';
 import MyCourses from './components/myCourses/MyCourses';
-import Test from './components/testFor/Test';
+import Test from './components/testFor/tests/Test';
 import AddCourse from './components/addCourse/AddCourse';
 import ChatComponent from './components/chatMessages/Messages';
 import MemoryGame from './components/memoryGame/MemoryGame';
 import Support from './components/support/Support';
-
+import AboutUs from './pages/AboutUs';
+import QuestionForm from './components/testFor/addTest/AddQuestionForm';
+import ChooseForTest from './components/testFor/ChooseForTest';
+import TetrisGame from "./components/tetris/tetrisGame"
+import SettingsPlatform from './components/settings/SettingsPaltform';
 
 interface Course {
   id: number;
@@ -29,6 +33,7 @@ const App: FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [savedCourses, setSavedCourses] = useState<Course[]>([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,6 +66,7 @@ const App: FC = () => {
 
   return (
     <>
+    
       <Routes>
         <Route path="/" element={<MainLayout isAuthenticated={!!user} users={user} onLogout={handleLogout} />}>
           <Route index element={<Intro />} />
@@ -74,6 +80,13 @@ const App: FC = () => {
           <Route path="/chat" element={user ? <ChatComponent /> : <Intro />} />
           <Route path="/memoryGame" element={user ? <MemoryGame /> : <Intro />} />
           <Route path="/support" element={user ? <Support /> : <Intro />} />
+          <Route path='/aboutus' element={<AboutUs />}/>
+          <Route path="/addTest" element={user ? <QuestionForm /> : <Intro />} />
+          <Route path="/choose" element={user ? <ChooseForTest /> : <Intro />} />
+          <Route path="/tetris" element={user ? <TetrisGame/> : <Intro />} />
+          <Route path="/settings" element={user ? <SettingsPlatform/> : <Intro />} />
+
+
         </Route>
       </Routes>
     </>

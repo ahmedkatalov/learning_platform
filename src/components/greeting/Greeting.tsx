@@ -20,7 +20,7 @@ const Greeting: FC = () => {
         <div className='greeting-container'>
             <div className='greeting-cute-star'></div>
             <div>
-                <h2 className='greeting-actually'>Welcome, {user?.displayName}</h2>
+                <h2 className='greeting-actually'>Welcome, {user ? user.displayName : "user" }</h2>
                 <p className='greeting-awesome-phrase'>
                     <i className="greeting-icon fa-solid fa-quote-left"></i> 
                     Infinity is not the limit

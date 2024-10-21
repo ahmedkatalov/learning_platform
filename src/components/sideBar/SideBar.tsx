@@ -7,7 +7,7 @@ import './Sidebar.css';
 
 const Sidebar: FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const role = useSelector((state: RootState) => state.role.role)
+  const role = useSelector((state: RootState) => state.role.role);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -30,10 +30,17 @@ const Sidebar: FC = () => {
             <i className="menu-icon fa-solid  fa-book"></i>
             {!isCollapsed && 'My Courses'}
           </NavLink>
-          <NavLink to="/test" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
+          {
+            role === "teacher" ?
+          <NavLink to="/choose" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
             <i className="menu-icon fa-solid fa-file-circle-question"></i>
             {!isCollapsed && 'Take a Test'}
-          </NavLink>
+          </NavLink> :
+                    <NavLink to="/test" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
+                    <i className="menu-icon fa-solid fa-file-circle-question"></i>
+                    {!isCollapsed && 'Take a Test'}
+                  </NavLink> 
+          }
           {
             role === "teacher" ? 
           <NavLink to="/addcourse" 
@@ -52,14 +59,13 @@ const Sidebar: FC = () => {
             <i className="menu-icon fa-solid fa-layer-group"></i>
             {!isCollapsed && 'Memory Game'}
           </NavLink>
-          <li className="menu-item">
-            <i className="menu-icon fa-brands fa-unsplash"></i>
+          <NavLink to="/tetris" 
+                   className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
+            <i className="menu-icon fa-solid fa-layer-group"></i>
             {!isCollapsed && 'Tetris Game'}
-          </li>
-          <li className="menu-item">
-            <i className="menu-icon fa-solid fa-dragon"></i>
-            {!isCollapsed && 'Dinosaur Game'}
-          </li>
+          </NavLink>
+
+
         </ul>
       </nav>
       <div className="sidebar-footer">
@@ -67,10 +73,11 @@ const Sidebar: FC = () => {
           <i className="sidebar-footer-icon fa-regular fa-circle-question"></i>
           {!isCollapsed && 'Support'}
         </NavLink>
-        <div className="sidebar-footer-item">
-          <i className="sidebar-footer-icon fa-solid fa-gear"></i>
+        <NavLink to="/settings" className={({ isActive }) => (isActive ? 'sidebar-active' : 'sidebar-footer-item')}>
+          <i className="sidebar-footer-icon fa-regular fa-circle-question"></i>
           {!isCollapsed && 'Settings'}
-        </div>
+        </NavLink>
+
       </div>
     </aside>
   );

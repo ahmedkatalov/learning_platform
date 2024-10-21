@@ -1,0 +1,86 @@
+.profile-main {
+    max-width: 1400px;
+    min-height: 611px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 72px;
+}
+
+.profile-container {
+    flex: 1;
+    padding-top: 30px;
+}
+
+/* .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.profile-image-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 2px solid #e1e4e8;
+    object-fit: cover;
+}
+
+.profile-edit-overlay {
+    position: absolute;
+    left: 200px;
+    bottom: 0;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.edit-label {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #007bff;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.image-input {
+    display: none;
+}
+
+.profile-username {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profile-actions button {
+    font-size: 16px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 300px;
+}
+
+.profile-actions button:hover {
+    background-color: #218838;
+}
+
+.fav-courses {
+    flex: 2;
+}
+
+.fav-courses-wrapper {
+    display: flex;
+    flex-direction: column;
+}

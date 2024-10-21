@@ -1,0 +1,84 @@
+.app {
+    display: grid;
+    grid-template-areas:
+      ". title ."
+      ". game controls";
+    grid-template-columns: repeat(3, 1fr);
+    height: 800px;
+  }
+  
+  h1 {
+    text-align: center;
+    grid-area: title;
+  }
+  
+.start-tetris{
+    padding: 5px;
+        color: #fff;
+    background-color: #3752e7;
+
+  }
+  
+  .board {
+    border: 1px solid #5c6bc0;
+    user-select: none;
+    margin: auto;
+    grid-area: game;
+  }
+  
+  .controls {
+    grid-area: controls;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .upcoming {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .cell {
+    width: 30px;
+    aspect-ratio: 1;
+    border: 1px solid #5c6bc0;
+  }
+  
+  .cell.hidden {
+    visibility: hidden;
+  }
+  
+  .cell.Empty {
+    background-color: rgb(255, 251, 251);
+  }
+  
+  .cell.I {
+    background-color: rgb(80, 227, 230);
+  }
+  
+  .cell.J {
+    background-color: rgb(0, 67, 211);
+  }
+  
+  .cell.L {
+    background-color: rgb(223, 173, 36);
+  }
+  
+  .cell.O {
+    background-color: rgb(255, 247, 0);
+  }
+  
+  .cell.S {
+    background-color: rgb(0, 245, 12);
+  }
+  
+  .cell.T {
+    background-color: rgb(131, 0, 253);
+  }
+  
+  .cell.Z {
+    background-color: rgb(255, 0, 0);
+  }

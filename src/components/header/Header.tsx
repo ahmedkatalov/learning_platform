@@ -15,7 +15,7 @@ interface HeaderProps {
     onLogout: () => void;
   }
 
-const Header: FC<HeaderProps> = ({ users, onLogout }) => {
+const Header: FC<HeaderProps> = ({ onLogout }) => {
     const duration = 400;
 
     const defaultStyle = {
@@ -82,7 +82,7 @@ const Header: FC<HeaderProps> = ({ users, onLogout }) => {
                              className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Courses
                     </NavLink>
-                    <NavLink to="/a"
+                    <NavLink to="/aboutus"
                              className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         About Us
                     </NavLink>

@@ -1,16 +1,15 @@
 .sidebar {
     grid-area: sidebar;
-    margin: 90px 0 0 10px;
+    margin: 95px 0 25px 10px;
+    padding: 20px;
     width: 200px;
-    height: 80%;
-    background-color: #191919;
-    color: white;
+    height: 550px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
-    position: fixed;
     border-radius: 15px;
+    background-color: #191919;
+    color: white;
     z-index: 1000;
   }
   
@@ -108,9 +107,4 @@
   .sidebar .toggle-btn {
     background: none;
     color: #A38FFD;
-    /* background: #ffff; */
-    /* padding: 1px 5px;
-    border: none;
-    border-radius: 50%;
-    font-size: 1rem; */
   }

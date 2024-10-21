@@ -43,10 +43,11 @@ const Sidebar: FC = () => {
           }
           {
             role === "teacher" ? 
-          <li className="menu-item">
+          <NavLink to="/addcourse" 
+                   className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
              <i className="menu-icon fa-solid fa-chalkboard-user"></i>
              {!isCollapsed && 'Add Course'}
-          </li> : ""
+          </NavLink> : ""
           }
           <NavLink to="/chat" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
             <i className="menu-icon fa-regular fa-comment"></i>

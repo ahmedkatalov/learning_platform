@@ -1,12 +1,14 @@
 import { addDoc, collection, Timestamp, orderBy, query, onSnapshot, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { auth, db } from "../../fireBase/fireStore";
+import { useSelector } from "react-redux";
 import "./Message.css";
+import { RootState } from "../../redux/store";
 
 const ChatComponent: React.FC = () => {
     const [message, setMessage] = useState<string>("");
     const [messages, setMessages] = useState<any[]>([]);
-
+    const role = useSelector((state: RootState) => state.role.role)
     // Функция для отправки сообщений
     const sendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -65,8 +67,7 @@ const ChatComponent: React.FC = () => {
                     </div>
 
                     {/* Кнопка очистки чата */}
-                    <button className="clear-chat" onClick={clearChat}>Очистить чат</button>
-
+                 
                     <form className="form-fixed" onSubmit={sendMessage}>
                         <input
                             className="message-input"
@@ -75,7 +76,13 @@ const ChatComponent: React.FC = () => {
                             onChange={(e) => setMessage(e.target.value)}
                             placeholder="Напишите сообщение"
                         />
-                        <button className="send-message" type="submit">Отправить</button>
+                        <button className="send-message" type="submit">Send</button>
+                        {
+                            role === "teacher" ?
+                            <button className="clear-chat" onClick={clearChat}>Clear chat</button> :
+                            ""
+                        }
+
                     </form>
                 </div>
             </div>

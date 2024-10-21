@@ -16,7 +16,7 @@
 }
 
 .support-h2-text {
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     font-size: 2.5rem;
     font-weight: 500;
     color: #396464;
@@ -24,17 +24,17 @@
 
 .support-cute-star {
     margin-right: 50px;
-    width: 350px;
-    height: 330px;
+    width: 320px;
+    height: 320px;
     background-image: url(../../assets/supportStar/cute-star7.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 350px;
+    background-size: 320px;
 }
 
 .support-p-text {
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-size: 2rem;
     color: #396464;
 }

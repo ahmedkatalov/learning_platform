@@ -38,8 +38,21 @@
   background:  linear-gradient(to right, #5c6bc0, #512da8);
 }
 
+.clear-chat {
+  padding: 10px 35px;
+  background-color: #ff6863;
+  margin-left: 30px;
+  color: white;
+  border-radius: 5px;
+ 
+  background:  linear-gradient(to right, #c77c6f, #ee1000);
+}
+.clear-chat:hover {
+  background:  linear-gradient(to right, #cebfbd, #d82316);
+}
+
 .send-message:hover {
-  background-color: rgb(209, 71, 228);
+  background:  linear-gradient(to right, #a68ce4, #4f08f5);
 }
 
 .name-user{

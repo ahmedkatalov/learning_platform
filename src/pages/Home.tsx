@@ -1,4 +1,4 @@
-import CoursesSection from '../components/coursesSection/CoursesSection';
+import CoursesSection from '../components/homeCoursesSection/CoursesSection';
 import Greeting from '../components/greeting/Greeting';
 
 interface Course {

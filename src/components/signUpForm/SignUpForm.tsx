@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { auth, googleProvider } from "../../fireBase/fireStore";
-import {
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  updateProfile,
-} from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setRole } from "../../redux/role/roleSlice";
-import { RootState } from "../../redux/store";
 
-import "./RegisterForm.css";
+
+
+import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { useNavigate} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRole } from '../../redux/role/roleSlice';
+import { RootState } from '../../redux/store';
+
+import './SignUpForm.css';
 interface RegisterFormProps {
   closeModal: () => void;
 }
 
+
 const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
+
+
+
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [name, setName] = useState<string>("");
@@ -225,4 +228,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
   );
 };
 
+
 export default RegisterForm;
+

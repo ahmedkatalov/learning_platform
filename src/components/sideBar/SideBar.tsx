@@ -1,13 +1,13 @@
 import { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector} from 'react-redux';
-import { RootState } from '../../redux/role/store';
+import { RootState } from '../../redux/store';
 
 import './Sidebar.css';
 
 const Sidebar: FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const role = useSelector((state: RootState) => state.role.role)
+  const role = useSelector((state: RootState) => state.role.role);
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -30,10 +30,17 @@ const Sidebar: FC = () => {
             <i className="menu-icon fa-solid  fa-book"></i>
             {!isCollapsed && 'My Courses'}
           </NavLink>
-          <NavLink to="/test" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
+          {
+            role === "teacher" ?
+          <NavLink to="/choose" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
             <i className="menu-icon fa-solid fa-file-circle-question"></i>
             {!isCollapsed && 'Take a Test'}
-          </NavLink>
+          </NavLink> :
+                    <NavLink to="/test" className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
+                    <i className="menu-icon fa-solid fa-file-circle-question"></i>
+                    {!isCollapsed && 'Take a Test'}
+                  </NavLink> 
+          }
           {
             role === "teacher" ? 
           <li className="menu-item">

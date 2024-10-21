@@ -8,12 +8,12 @@ import MainLayout from './components/MainLayout';
 import Intro from './pages/Intro';
 import Home from './pages/Home';
 import MyCourses from './components/myCourses/MyCourses';
-import Test from './components/testFor/Test';
+import Test from './components/testFor/tests/Test';
 import ChatComponent from './components/chatMessages/Messages';
 import MemoryGame from './components/memoryGame/MemoryGame';
 import Support from './components/support/Support';
-
-
+import QuestionForm from './components/testFor/addTest/AddQuestionForm';
+import ChooseForTest from './components/testFor/ChooseForTest';
 
 
 
@@ -61,6 +61,7 @@ const App: FC = () => {
 
   return (
     <>
+    
       <Routes>
         <Route path="/" element={<MainLayout isAuthenticated={!!user} />}>
           <Route index element={<Intro />} />
@@ -70,6 +71,9 @@ const App: FC = () => {
           <Route path="/chat" element={user ? <ChatComponent /> : <Intro />} />
           <Route path="/memoryGame" element={user ? <MemoryGame /> : <Intro />} />
           <Route path="/support" element={user ? <Support /> : <Intro />} />
+          <Route path="/addTest" element={user ? <QuestionForm /> : <Intro />} />
+          <Route path="/choose" element={user ? <ChooseForTest /> : <Intro />} />
+
         </Route>
       </Routes>
 

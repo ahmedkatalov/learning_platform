@@ -1,0 +1,64 @@
+.question-form {
+    background-color: #f9f9f9; /* Светлый фон для формы */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для формы */
+    max-width: 400px;
+    margin: auto;
+    margin-top: 80px;
+  }
+  
+  .question-form h2 {
+    color: #333; /* Цвет заголовка */
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  .question-form input[type="text"],
+  .question-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd; /* Граница полей */
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Учет паддинга в ширине */
+  }
+  
+  .question-form input[type="text"]:focus,
+  .question-form select:focus {
+    border-color: #007bff; /* Цвет границы при фокусе */
+    outline: none; /* Убираем стандартное выделение */
+  }
+  
+  .question-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6C63FF;
+    color: white; /* Цвет текста кнопки */
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавный переход цвета */
+  }
+  
+  .question-form button:hover {
+    background-color: #302a91;
+  }
+  
+  .question-form input[type="text"]::placeholder {
+    color: #888; /* Цвет плейсхолдера */
+  }
+  
+  .question-form select {
+    cursor: pointer;
+  }
+  
+  .question-form button:focus {
+    outline: none;
+    background-color: #6C63FF;
+  }
+  

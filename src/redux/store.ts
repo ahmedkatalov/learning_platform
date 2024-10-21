@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import roleReducer from "./roleSlice"
-
+import roleReducer from "./role/roleSlice";
+import questionReducer from "./test/testSlise"
 const store = configureStore({
-    reducer: {
-        role: roleReducer,
-    }
+  reducer: {
+    role: roleReducer,
+    questions: questionReducer
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export default store
+export default store;

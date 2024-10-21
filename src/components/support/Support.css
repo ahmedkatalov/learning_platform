@@ -38,3 +38,27 @@
     font-size: 2rem;
     color: #396464;
 }
+
+.support{
+    display: block;
+}
+
+.support-text{
+    max-width: 100%;
+    min-height: 300px;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.email-form_input{
+    max-width: 200px;
+    height: 10px;
+
+    border-radius: 5px ;
+    padding: 10px;
+}
+
+textarea:focus {
+    outline: none;
+    border: none; /* Если нужно убрать именно border */
+}

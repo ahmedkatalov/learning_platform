@@ -101,7 +101,7 @@ const Header: FC<HeaderProps> = ({ users, onLogout }) => {
                         <Transition in={isExitModalOpen} timeout={duration} unmountOnExit>
                             {(state) => (
                                 <div
-                                    className="modal-overlay"
+                                    className="modal-overlay-for-exit"
                                     onClick={closeModal}
                                     style={{
                                         ...defaultStyle,
@@ -149,7 +149,7 @@ const Header: FC<HeaderProps> = ({ users, onLogout }) => {
 
                         <Transition in={isRegisterModalOpen} timeout={duration} unmountOnExit>
                             {(state) => (
-                                <div className="modal-overlay"
+                                <div className="modal-overlay-for-reg"
                                     onClick={closeModal}
                                     style={{
                                         ...defaultStyle,

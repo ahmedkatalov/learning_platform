@@ -16,6 +16,7 @@ import AddCourse from './components/addCourse/AddCourse';
 import ChatComponent from './components/chatMessages/Messages';
 import MemoryGame from './components/memoryGame/MemoryGame';
 import Support from './components/support/Support';
+import AboutUs from './pages/AboutUs';
 import QuestionForm from './components/testFor/addTest/AddQuestionForm';
 import ChooseForTest from './components/testFor/ChooseForTest';
 
@@ -79,6 +80,7 @@ const App: FC = () => {
           <Route path="/chat" element={user ? <ChatComponent /> : <Intro />} />
           <Route path="/memoryGame" element={user ? <MemoryGame /> : <Intro />} />
           <Route path="/support" element={user ? <Support /> : <Intro />} />
+          <Route path='/aboutus' element={<AboutUs />}/>
           <Route path="/addTest" element={user ? <QuestionForm /> : <Intro />} />
           <Route path="/choose" element={user ? <ChooseForTest /> : <Intro />} />
 

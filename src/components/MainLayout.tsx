@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Sidebar from '../components/sideBar/SideBar';
@@ -8,12 +8,18 @@ import './MainLayout.css';
 
 interface MainLayoutProps {
   isAuthenticated: boolean;
+  users: any;
+  onLogout: () => void;
 }
 
-const MainLayout: FC<MainLayoutProps> = ({ isAuthenticated }) => {
+const MainLayout: FC<MainLayoutProps> = ({ isAuthenticated, users, onLogout }) => {
+  const location = useLocation();
+
+  const isAddCourseActive = location.pathname === '/addcourse';
+
   return (
-    <div className="main-layout">
-      <Header/>
+    <div className="main-layout" style={{ backgroundColor: isAddCourseActive ? '#ededf7' : 'initial' }}>
+      <Header users={users} onLogout={onLogout} />
 
         {isAuthenticated && <Sidebar /> ?
           <div className="layout-body">

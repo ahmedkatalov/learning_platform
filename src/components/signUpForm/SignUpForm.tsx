@@ -5,16 +5,16 @@ import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from '
 import { useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRole } from '../../redux/role/roleSlice';
-import { RootState } from '../../redux/role/store';
+import { RootState } from '../../redux/store';
 
-import './RegisterForm.css';
+import './SignUpForm.css';
 interface RegisterFormProps {
   closeModal: () => void;
 }
 
 
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
+const SignUpForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [name, setName] = useState<string>("");
@@ -159,4 +159,4 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ closeModal }) => {
   
 };
 
-export default RegisterForm;
+export default SignUpForm;

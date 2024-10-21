@@ -6,9 +6,13 @@ import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 
 import MainLayout from './components/MainLayout';
 import Intro from './pages/Intro';
+import Pricing from './components/pricing/Pricing';
+import Courses from './components/courses/Courses';
+import CourseDetails from './components/courseDetails/CourseDetails';
 import Home from './pages/Home';
 import MyCourses from './components/myCourses/MyCourses';
 import Test from './components/testFor/Test';
+import AddCourse from './components/addCourse/AddCourse';
 import ChatComponent from './components/chatMessages/Messages';
 import MemoryGame from './components/memoryGame/MemoryGame';
 import Support from './components/support/Support';
@@ -58,22 +62,20 @@ const App: FC = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout isAuthenticated={!!user} />}>
+        <Route path="/" element={<MainLayout isAuthenticated={!!user} users={user} onLogout={handleLogout} />}>
           <Route index element={<Intro />} />
-          <Route path="/home" element={<Home savedCourses={savedCourses} onSaveCourse={handleSaveCourse} />} />
-          <Route path="/mycourses" element={<MyCourses savedCourses={savedCourses} />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/home" element={user ? <Home savedCourses={savedCourses} onSaveCourse={handleSaveCourse} /> : <Intro />} />
+          <Route path="/mycourses" element={user ? <MyCourses savedCourses={savedCourses} /> : <Intro />} />
           <Route path="/test" element={user ? <Test /> : <Intro />} />
+          <Route path="/addcourse" element={user ? <AddCourse /> : <Intro />} />
           <Route path="/chat" element={user ? <ChatComponent /> : <Intro />} />
           <Route path="/memoryGame" element={user ? <MemoryGame /> : <Intro />} />
           <Route path="/support" element={user ? <Support /> : <Intro />} />
         </Route>
       </Routes>
-
-      {user && (
-        <button onClick={handleLogout} style={{ position: 'fixed', bottom: '10px', right: '10px' }}>
-          Выйти
-        </button>
-      )}
     </>
   );
 };

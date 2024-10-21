@@ -15,7 +15,7 @@ interface HeaderProps {
     onLogout: () => void;
   }
 
-const Header: FC<HeaderProps> = ({ users, onLogout }) => {
+const Header: FC<HeaderProps> = ({ onLogout }) => {
     const duration = 400;
 
     const defaultStyle = {

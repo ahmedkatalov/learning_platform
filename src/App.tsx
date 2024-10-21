@@ -18,8 +18,8 @@ import MemoryGame from './components/memoryGame/MemoryGame';
 import Support from './components/support/Support';
 import QuestionForm from './components/testFor/addTest/AddQuestionForm';
 import ChooseForTest from './components/testFor/ChooseForTest';
-
-
+import TetrisGame from "./components/tetris/tetrisGame"
+import SettingsModal from "./components/profile/ProfileSettings"
 
 interface Course {
   id: number;
@@ -81,6 +81,9 @@ const App: FC = () => {
           <Route path="/support" element={user ? <Support /> : <Intro />} />
           <Route path="/addTest" element={user ? <QuestionForm /> : <Intro />} />
           <Route path="/choose" element={user ? <ChooseForTest /> : <Intro />} />
+          <Route path="/tetris" element={user ? <TetrisGame/> : <Intro />} />
+          <Route path="/settings" element={user ? <SettingsModal/> : <Intro />} />
+
 
         </Route>
       </Routes>

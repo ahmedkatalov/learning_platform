@@ -1,0 +1,97 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1f243d;
+}
+
+.form-container {
+  background-color: #ededf7;
+  padding: 20px;
+  border: 1px solid #7e91ff;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  position: absolute;
+  width: 300px;
+  right: 0;
+  height: -webkit-fill-available;
+  top: 0;
+}
+
+.close-btn-2 {
+  background: none;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  font-size: 17px;
+}
+
+.profile-page-link::before {
+  content: "👤";
+  padding: 20px 5px 10px 0;
+}
+
+.profile-page {
+  display: flex;
+  margin: 20px 0;
+  text-decoration: none;
+  color: #333;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-page a {
+  font-style: none;
+}
+
+.profile-page a:hover {
+  color: #007bff;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.profile-photo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+}
+
+.profile-settings::before {
+  content: "⚙️";
+  padding-right: 6px;
+}
+
+.profile-settings {
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+}
+
+.fa-right-from-bracket:before,
+.fa-sign-out-alt:before {
+  content: "\f2f5";
+  padding-right: 10px !important;
+}
+
+.profile-out-box {
+  position: absolute;
+  bottom: 40px;
+  left: 35px;
+}
+
+.profile-out:hover {
+  color: #007bff;
+}

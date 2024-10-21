@@ -59,14 +59,13 @@ const Sidebar: FC = () => {
             <i className="menu-icon fa-solid fa-layer-group"></i>
             {!isCollapsed && 'Memory Game'}
           </NavLink>
-          <li className="menu-item">
-            <i className="menu-icon fa-brands fa-unsplash"></i>
+          <NavLink to="/tetris" 
+                   className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
+            <i className="menu-icon fa-solid fa-layer-group"></i>
             {!isCollapsed && 'Tetris Game'}
-          </li>
-          <li className="menu-item">
-            <i className="menu-icon fa-solid fa-dragon"></i>
-            {!isCollapsed && 'Dinosaur Game'}
-          </li>
+          </NavLink>
+
+
         </ul>
       </nav>
       <div className="sidebar-footer">
@@ -74,10 +73,11 @@ const Sidebar: FC = () => {
           <i className="sidebar-footer-icon fa-regular fa-circle-question"></i>
           {!isCollapsed && 'Support'}
         </NavLink>
-        <div className="sidebar-footer-item">
-          <i className="sidebar-footer-icon fa-solid fa-gear"></i>
+        <NavLink to="/settings" className={({ isActive }) => (isActive ? 'sidebar-active' : 'sidebar-footer-item')}>
+          <i className="sidebar-footer-icon fa-regular fa-circle-question"></i>
           {!isCollapsed && 'Settings'}
-        </div>
+        </NavLink>
+
       </div>
     </aside>
   );

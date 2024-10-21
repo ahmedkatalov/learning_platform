@@ -1,15 +1,21 @@
 import { FC, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
-import { auth } from "../../fireBase/fireStore"; // Ваш импорт auth
-import { onAuthStateChanged, User } from 'firebase/auth'; // Импортируем необходимые методы и типы
+import { auth } from "../../fireBase/fireStore";
+import { onAuthStateChanged, User } from 'firebase/auth';
 
 import SignInForm from '../signInForm/SignInForm';
-import RegisterForm from '../registerForm/RegisterForm';
+import SignUpForm from '../signUpForm/SignUpForm';
+import ExitModal from '../exitModal/ExitModal';
 
 import './Header.css';
 
-const Header: FC = () => {
+interface HeaderProps {
+    users: any;
+    onLogout: () => void;
+  }
+
+const Header: FC<HeaderProps> = ({ users, onLogout }) => {
     const duration = 400;
 
     const defaultStyle = {
@@ -26,15 +32,14 @@ const Header: FC = () => {
 
     const [isSignInModalOpen, setIsSignInModalOpen] = useState<boolean>(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState<boolean>(false);
-    const [user, setUser] = useState<User | null>(null); // Состояние для хранения информации о пользователе
+    const [isExitModalOpen, setIsExitModalOpen] = useState<boolean>(false);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        // Подписываемся на изменения состояния пользователя
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         });
 
-        // Отписываемся от слушателя при размонтировании компонента
         return () => unsubscribe();
     }, []);
 
@@ -46,9 +51,14 @@ const Header: FC = () => {
         setIsRegisterModalOpen(true);
     };
 
+    const openExitModal = () => {
+        setIsExitModalOpen(true);
+    };
+
     const closeModal = () => {
         setIsSignInModalOpen(false);
         setIsRegisterModalOpen(false);
+        setIsExitModalOpen(false);
     };
 
     return (
@@ -60,39 +70,56 @@ const Header: FC = () => {
                 </div>
 
                 <div className='nav-block'>
-                    <NavLink
-                        to="/home"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/pricing"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
+                        Pricing
+                    </NavLink>
+                    <NavLink to="/home"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Home
                     </NavLink>
-                    <NavLink
-                        to="/a"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/courses"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Courses
                     </NavLink>
-
-                    <NavLink
-                        to="/aboutus"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/aboutus"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         About Us
                     </NavLink>
-
-                    <NavLink
-                        to="/a"
-                        className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}
-                    >
+                    <NavLink to="/a"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Contact
                     </NavLink>
                 </div>
                 
-                {/* Если пользователь авторизован, показываем "fsf", иначе - кнопки для регистрации и входа */}
                 {user ? (
-                    "fsf"
+                    <div>
+                        <button className='header-exit-btn' onClick={openExitModal}>
+                            <div className='header-user-pic'></div>
+                        </button>
+
+                        <Transition in={isExitModalOpen} timeout={duration} unmountOnExit>
+                            {(state) => (
+                                <div
+                                    className="modal-overlay"
+                                    onClick={closeModal}
+                                    style={{
+                                        ...defaultStyle,
+                                        ...transitionStyles[state],
+                                    }}>
+                                    <div
+                                        className="modal-content-for-exit"
+                                        onClick={(e) => e.stopPropagation()}>
+                                        <button className="close-btn" onClick={closeModal}>X</button>
+                                        <ExitModal onLogout={onLogout} />
+                                    </div>
+                                </div>
+                            )}
+                        </Transition>
+                    </div>
                 ) : (
                     <div className='header-btns'>
+
                         <button className="sign-in-btn" onClick={openSignInModal}>
                             Sign in
                         </button>
@@ -105,12 +132,10 @@ const Header: FC = () => {
                                     style={{
                                         ...defaultStyle,
                                         ...transitionStyles[state],
-                                    }}
-                                >
+                                    }}>
                                     <div
                                         className="modal-content"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
+                                        onClick={(e) => e.stopPropagation()}>
                                         <button className="close-btn" onClick={closeModal}>X</button>
                                         <SignInForm />
                                     </div>
@@ -124,20 +149,16 @@ const Header: FC = () => {
 
                         <Transition in={isRegisterModalOpen} timeout={duration} unmountOnExit>
                             {(state) => (
-                                <div
-                                    className="modal-overlay"
+                                <div className="modal-overlay"
                                     onClick={closeModal}
                                     style={{
                                         ...defaultStyle,
                                         ...transitionStyles[state],
-                                    }}
-                                >
-                                    <div
-                                        className="modal-content-for-reg"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
+                                    }}>
+                                    <div className="modal-content-for-reg"
+                                         onClick={(e) => e.stopPropagation()}>
                                         <button className="close-btn" onClick={closeModal}>X</button>
-                                        <RegisterForm closeModal={closeModal} />
+                                        <SignUpForm closeModal={closeModal} />
                                     </div>
                                 </div>
                             )}

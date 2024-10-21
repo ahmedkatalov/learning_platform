@@ -12,8 +12,13 @@ import Pic6 from '../../assets/homePagePics/pic6.png';
 interface Course {
   id: number;
   title: string;
-  level: string;
   image: string;
+  level: string;
+}
+
+interface CoursesSectionProps {
+  savedCourses: Course[];
+  onSaveCourse: (course: Course) => void;
 }
 
 const courses: Course[] = [
@@ -55,32 +60,32 @@ const courses: Course[] = [
   },
 ];
 
-const CoursesSection: FC = () => {
+const CoursesSection: FC<CoursesSectionProps> = ({ onSaveCourse }) => {
   return (
     <section className="courses-section">
-      <h2 className='courses-section-heading2'>Get started with our free courses</h2>
-      <div className="courses-grid">
+      <h2 className="courses-section-heading2">Get started with our free courses</h2>
+      <div className="courses-section-grid">
         {courses.map((course) => (
           <div key={course.id} className="course-card">
             <img className="course-image" src={course.image} alt={course.title} />
-            <h3 className='courses-section-title'>{course.title}</h3>
-            <div className='courses-section-icon-box'>
+            <h3 className="courses-section-title">{course.title}</h3>
+            <div className="courses-section-icon-box">
               <i className="courses-section-icon fa-regular fa-calendar"></i>
-              <i className="courses-section-icon fa-regular fa-bookmark"></i>
+              <i
+                className="courses-section-icon fa-regular fa-bookmark"
+                onClick={() => onSaveCourse(course)}></i>
             </div>
-            <div className='courses-section-box'>
+            <div className="courses-section-box">
               <p className="course-level">{course.level}</p>
               <button className="get-started-btn">Get Started</button>
             </div>
           </div>
         ))}
       </div>
-      <button className="courses-section-show-more-btn">
-        Show More <span className='courses-section-show-btn-arrow'>&#8595;</span>
+      <button className='courses-section-show-more-btn'>
+        Show more  
+        <span className='courses-section-show-btn-arrow'>&#8595;</span>
       </button>
-      <div>
-        
-      </div>
     </section>
   );
 };

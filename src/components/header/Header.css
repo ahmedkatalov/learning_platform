@@ -1,12 +1,12 @@
 .header-fixed-box {
     background-color: #ededf7;
+    /* box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1); */
     padding: 10px 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1001;
-    margin-bottom: 20px;
 }
 
 .header-content {
@@ -39,14 +39,13 @@
     letter-spacing: 1px;
     font-weight: 500;
     background: linear-gradient(to right, #5c6bc0, #512da8);
-    /* linear-gradient(to right, #f321d0, #086fff,#be23cf, #eedd44); */
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
 
 .nav-block {
     display: flex;
-    gap: 45px;
+    gap: 50px;
 }
 
 .h-link {
@@ -74,10 +73,17 @@
 
 .h-link-on {
     color: #7e91ff;
-    /* font-weight: 500; */
     font-size: 1.4rem;
     letter-spacing: 1px;
-    /* text-decoration: underline; */
+}
+
+.header-user-pic {
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/afterSigneInStar/cute-star4.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
 }
 
 .sign-in-btn,
@@ -99,6 +105,10 @@
 
 .reg-btn:hover {
     color: #5c6bc0;
+}
+
+.header-exit-btn {
+    background-color: transparent;
 }
 
 /* Modal Content */
@@ -139,9 +149,19 @@
     padding: 5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    /* width: 600px; */
-    /* width: 100%; */
     height: 500px;
+    will-change: transform, opacity;
+}
+
+.modal-content-for-exit {
+    background-color: #fdf9ff;
+    border-radius: 20px;
+    /* backdrop-filter: blur(5px); */
+    z-index: 10;
+    padding: 4rem 7rem;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    position: relative;
+    /* height: fit-content; */
     will-change: transform, opacity;
 }
 

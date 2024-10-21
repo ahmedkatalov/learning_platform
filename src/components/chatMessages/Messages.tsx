@@ -1,6 +1,7 @@
-import { addDoc, collection, Timestamp, orderBy, query, onSnapshot } from "firebase/firestore"
-import { useEffect, useState } from "react"
-import { auth, db } from "../../fireBase/fireStore"
+import { addDoc, collection, Timestamp, orderBy, query, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { auth, db } from "../../fireBase/fireStore";
+
 import "./Message.css"
 
 const ChatComponent: React.FC = () => {
@@ -8,7 +9,7 @@ const ChatComponent: React.FC = () => {
     const [messages, setMessages] = useState<any[]>([])
 
     const sendMessage = async (e: React.FormEvent) => {
-        e.preventDefault(); // Предотвращаем перезагрузку страницы
+        e.preventDefault();
         if (message.trim() !== "") {
             try {
                 await addDoc(collection(db, "messages"), {
@@ -17,7 +18,7 @@ const ChatComponent: React.FC = () => {
                     uid: auth.currentUser?.uid,
                     createdAt: Timestamp.fromDate(new Date())
                 });
-                setMessage(""); // Очищаем поле ввода после отправки сообщения
+                setMessage("");
             } catch (error) {
                 console.error('Error sending message: ', error);
             }
@@ -38,30 +39,28 @@ const ChatComponent: React.FC = () => {
 
 
     return (
-        <> 
+        <div className="chat-box"> 
             <div className="message-container">
                 <div className="message-content">
-                <div className="message-list">
-                    {messages.map((mes) => (
-                        <div key={mes.id}  className={`message ${mes.uid === auth.currentUser?.uid ? "message-right" : "message-left"}`} >
-                            <strong className="name-user">{mes.name}</strong>: 
-                            <p>{mes.text}</p>
-                        </div>
-                    ))}
-                </div>
-                <form className="form-fixed" onSubmit={sendMessage}>
-                    <input
-                    className="message-input"
-                        type="text"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Type your message"
-                    />
-                    <button className="send-message" type="submit">Send</button> 
-                </form>
+                    <div className="message-list">
+                        {messages.map((mes) => (
+                            <div key={mes.id}  className={`message ${mes.uid === auth.currentUser?.uid ? "message-right" : "message-left"}`} >
+                                <strong className="name-user">{mes.name}</strong> 
+                                <p>{mes.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <form className="form-fixed" onSubmit={sendMessage}>
+                        <input className="message-input"
+                               type="text"
+                               value={message}
+                               onChange={(e) => setMessage(e.target.value)}
+                               placeholder="Type your message"/>
+                        <button className="send-message" type="submit">Send</button> 
+                    </form>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

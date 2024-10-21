@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import roleReducer from "./roleSlice"
+import roleReducer from "./role/roleSlice";
+import coursesReducer from "./newCourse/coursesSlice";
 
 
 const store = configureStore({
     reducer: {
-        role: roleReducer
+        role: roleReducer,
+        courses: coursesReducer,
     }
 });
 

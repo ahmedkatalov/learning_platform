@@ -1,0 +1,64 @@
+.mycorses-container {
+    width: 100%;
+    box-shadow: 0 10px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-inline: auto;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #6161614e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.mycourses-cute-star {
+    width: 250px;
+    height: 210px;
+    background-image: url(../../assets/myCoursesStar/cute-star6.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 250px;
+}
+
+.mycourses-content {
+    margin-top: 40px;
+    font-size:  2.5rem;
+    font-weight: 600;
+    color: #5e7db2;
+}
+
+.mycourses-icon {
+    margin: 0 5px;
+    padding: 0 5px;
+    font-size: 1rem;
+    color: #5e7db2;
+}
+
+.mycourses-phrase {
+    margin-top: 50px;
+    font-size: 1.3rem;
+}
+
+.mycourses-section {
+    max-width: 1200px;
+    margin-bottom: 200px;
+    margin-inline: auto;
+}
+
+.mycourses-p-txt {
+    position: absolute;
+    font-size:  2rem;
+    font-weight: 600;
+    color: #5e7db2;
+    margin-left: 31%;
+    /* margin: 0 0 100px; */
+}
+
+.saved-courses-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 70px 0 100px;
+}

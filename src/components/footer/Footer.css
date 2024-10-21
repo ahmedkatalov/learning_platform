@@ -35,7 +35,6 @@
   .foo-inspo {
     font-size: 1rem;
     background:  linear-gradient(to right, #5c6bc0, #512da8);
-    /* background:  linear-gradient(to right, #A38FFD, #D38FFD); */
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
   }
@@ -94,7 +93,6 @@
     padding: 5px 15px;
     background-color: #6C63FF;
     color: white;
-    border: none;
     border-radius: 5px;
   }
   

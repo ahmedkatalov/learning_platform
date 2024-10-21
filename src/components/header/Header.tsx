@@ -6,10 +6,16 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 
 import SignInForm from '../signInForm/SignInForm';
 import SignUpForm from '../signUpForm/SignUpForm';
+import ExitModal from '../exitModal/ExitModal';
 
 import './Header.css';
 
-const Header: FC = () => {
+interface HeaderProps {
+    users: any;
+    onLogout: () => void;
+  }
+
+const Header: FC<HeaderProps> = ({ users, onLogout }) => {
     const duration = 400;
 
     const defaultStyle = {
@@ -26,6 +32,7 @@ const Header: FC = () => {
 
     const [isSignInModalOpen, setIsSignInModalOpen] = useState<boolean>(false);
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState<boolean>(false);
+    const [isExitModalOpen, setIsExitModalOpen] = useState<boolean>(false);
     const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
@@ -44,9 +51,14 @@ const Header: FC = () => {
         setIsRegisterModalOpen(true);
     };
 
+    const openExitModal = () => {
+        setIsExitModalOpen(true);
+    };
+
     const closeModal = () => {
         setIsSignInModalOpen(false);
         setIsRegisterModalOpen(false);
+        setIsExitModalOpen(false);
     };
 
     return (
@@ -58,6 +70,10 @@ const Header: FC = () => {
                 </div>
 
                 <div className='nav-block'>
+                    <NavLink to="/pricing"
+                             className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
+                        Pricing
+                    </NavLink>
                     <NavLink to="/home"
                              className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Home
@@ -78,7 +94,28 @@ const Header: FC = () => {
                 
                 {user ? (
                     <div>
-                        <div className='header-user-pic'></div>
+                        <button className='header-exit-btn' onClick={openExitModal}>
+                            <div className='header-user-pic'></div>
+                        </button>
+
+                        <Transition in={isExitModalOpen} timeout={duration} unmountOnExit>
+                            {(state) => (
+                                <div
+                                    className="modal-overlay"
+                                    onClick={closeModal}
+                                    style={{
+                                        ...defaultStyle,
+                                        ...transitionStyles[state],
+                                    }}>
+                                    <div
+                                        className="modal-content-for-exit"
+                                        onClick={(e) => e.stopPropagation()}>
+                                        <button className="close-btn" onClick={closeModal}>X</button>
+                                        <ExitModal onLogout={onLogout} />
+                                    </div>
+                                </div>
+                            )}
+                        </Transition>
                     </div>
                 ) : (
                     <div className='header-btns'>

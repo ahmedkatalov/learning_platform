@@ -6,7 +6,9 @@ import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 
 import MainLayout from './components/MainLayout';
 import Intro from './pages/Intro';
+import Pricing from './components/pricing/Pricing';
 import Courses from './components/courses/Courses';
+import CourseDetails from './components/courseDetails/CourseDetails';
 import Home from './pages/Home';
 import MyCourses from './components/myCourses/MyCourses';
 import Test from './components/testFor/Test';
@@ -60,9 +62,11 @@ const App: FC = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout isAuthenticated={!!user} />}>
+        <Route path="/" element={<MainLayout isAuthenticated={!!user} users={user} onLogout={handleLogout} />}>
           <Route index element={<Intro />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/home" element={user ? <Home savedCourses={savedCourses} onSaveCourse={handleSaveCourse} /> : <Intro />} />
           <Route path="/mycourses" element={user ? <MyCourses savedCourses={savedCourses} /> : <Intro />} />
           <Route path="/test" element={user ? <Test /> : <Intro />} />
@@ -72,12 +76,6 @@ const App: FC = () => {
           <Route path="/support" element={user ? <Support /> : <Intro />} />
         </Route>
       </Routes>
-
-      {user && (
-        <button onClick={handleLogout} style={{ position: 'fixed', bottom: '10px', right: '10px' }}>
-          Выйти
-        </button>
-      )}
     </>
   );
 };

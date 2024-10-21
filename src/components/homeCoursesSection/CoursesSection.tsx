@@ -64,7 +64,7 @@ const CoursesSection: FC<CoursesSectionProps> = ({ onSaveCourse }) => {
   return (
     <section className="courses-section">
       <h2 className="courses-section-heading2">Get started with our free courses</h2>
-      <div className="courses-grid">
+      <div className="courses-section-grid">
         {courses.map((course) => (
           <div key={course.id} className="course-card">
             <img className="course-image" src={course.image} alt={course.title} />
@@ -73,8 +73,7 @@ const CoursesSection: FC<CoursesSectionProps> = ({ onSaveCourse }) => {
               <i className="courses-section-icon fa-regular fa-calendar"></i>
               <i
                 className="courses-section-icon fa-regular fa-bookmark"
-                onClick={() => onSaveCourse(course)}
-              ></i>
+                onClick={() => onSaveCourse(course)}></i>
             </div>
             <div className="courses-section-box">
               <p className="course-level">{course.level}</p>
@@ -83,6 +82,10 @@ const CoursesSection: FC<CoursesSectionProps> = ({ onSaveCourse }) => {
           </div>
         ))}
       </div>
+      <button className='courses-section-show-more-btn'>
+        Show more  
+        <span className='courses-section-show-btn-arrow'>&#8595;</span>
+      </button>
     </section>
   );
 };

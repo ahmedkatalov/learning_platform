@@ -1,0 +1,39 @@
+.exit-modal-container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.exit-modal-title {
+    letter-spacing: 0.7px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #519898;
+}
+
+.exit-modal-star {
+    width: 270px;
+    height: 270px;
+    background-image: url(../../assets/exitModalStar/cute-star44.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 270px;
+}
+
+.exit-modal-btn {
+    padding: 8px 25px;
+    border-radius: 5px;
+    background-color: #519898;
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.exit-modal-btn:hover {
+    background-color: #72d3d3;
+    transform: translateY(-3px);
+}

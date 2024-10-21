@@ -90,47 +90,59 @@ const AddCourse: FC = () => {
 
   return (
     <div className='addcourse-container'>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Course name:</label>
+      
+      <div className='add-course-cute-star'></div>
+      <form className='add-course-form' onSubmit={handleSubmit}>
+        <div className='add-course-input-box'>
+          <label className='addcourse-label'>Course name:</label>
           <input
+            className='addcourse-input'
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+            required />
         </div>
 
-        <div>
-          <label>Description:</label>
+        <div className='add-course-input-box'>
+          <label className='addcourse-label'>Description:</label>
           <textarea
+            className='addcourse-input'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            required
-          />
+            required />
         </div>
 
-        <div>
-          <label>Price:</label>
+        <div className='add-course-input-box'>
+          <label className='addcourse-label'>Price:</label>
           <input
+            className='addcourse-input'
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            required
-          />
+            required />
         </div>
 
-        <div>
-          <label>Thumbnail:</label>
-          <input type="file" accept="image/*" onChange={(e) => handleFileChange(e, setImage)} required />
+        <div className='add-course-input-box'>
+          <label className='addcourse-label'>Thumbnail:</label>
+          <input
+            className='addcourse-input-file' 
+            type="file" 
+            accept="image/*" 
+            onChange={(e) => handleFileChange(e, setImage)} 
+            required />
         </div>
 
-        <div>
-          <label>Video:</label>
-          <input type="file" accept="video/*" onChange={(e) => handleFileChange(e, setVideo)} required />
+        <div className='add-course-input-box'>
+          <label className='addcourse-label'>Video:</label>
+          <input 
+            className='addcourse-input-file' 
+            type="file" 
+            accept="video/*" 
+            onChange={(e) => handleFileChange(e, setVideo)} 
+            required />
         </div>
 
-        <button type="submit" disabled={isLoading}>
+        <button className='addcourse-btn' type="submit" disabled={isLoading}>
           {isLoading ? 'Adding course...' : 'Add course'}
         </button>
       </form>

@@ -3,7 +3,8 @@ import "./Settings.css"
 const SettingsPlatform = () => {
     return(
         <>
-        <div className="setting-container">
+        <div className="settings-container">
+            <div className="setting-cute-star"></div>
         </div>
         </>
     )

@@ -86,7 +86,7 @@ const Header: FC<HeaderProps> = ({ onLogout }) => {
                              className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         About Us
                     </NavLink>
-                    <NavLink to="/a"
+                    <NavLink to="/contactus"
                              className={({ isActive }) => (isActive ? 'h-link-on' : 'h-link')}>
                         Contact
                     </NavLink>

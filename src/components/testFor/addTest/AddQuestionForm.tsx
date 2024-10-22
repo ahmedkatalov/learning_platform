@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addQuestion } from "../../../redux/test/testSlise";
-import './Form.css'; // Подключаем стили
 import { useNavigate } from "react-router-dom";
+
+import './Form.css';
 
 export const QuestionForm: FC = () => {
     const navigate = useNavigate()

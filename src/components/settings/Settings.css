@@ -1,6 +1,16 @@
 .settings-container {
     max-width: 1200px;
-    margin: 200px;
-    height: 100vh;
-  
+    margin: auto;
+    margin-top: 170px;
+    display: flex;
+    justify-content: center;
+}
+
+.setting-cute-star {
+    background-image: url(../../assets/cute-star8.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 400px;
+    width: 400px;
+    height: 400px;
 }

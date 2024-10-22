@@ -16,11 +16,12 @@ import AddCourse from './components/addCourse/AddCourse';
 import ChatComponent from './components/chatMessages/Messages';
 import MemoryGame from './components/memoryGame/MemoryGame';
 import Support from './components/support/Support';
-import AboutUs from './pages/AboutUs';
+import AboutUs from './components/aboutUs';
 import QuestionForm from './components/testFor/addTest/AddQuestionForm';
 import ChooseForTest from './components/testFor/ChooseForTest';
-import TetrisGame from "./components/tetris/tetrisGame"
+import TetrisGame from "./components/tetris/tetrisGame";
 import SettingsPlatform from './components/settings/SettingsPaltform';
+import ContactUs from './components/contact/Contact';
 
 interface Course {
   id: number;
@@ -73,6 +74,7 @@ const App: FC = () => {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/contactus" element={<ContactUs />} />
           <Route path="/home" element={user ? <Home savedCourses={savedCourses} onSaveCourse={handleSaveCourse} /> : <Intro />} />
           <Route path="/mycourses" element={user ? <MyCourses savedCourses={savedCourses} /> : <Intro />} />
           <Route path="/test" element={user ? <Test /> : <Intro />} />
@@ -80,13 +82,11 @@ const App: FC = () => {
           <Route path="/chat" element={user ? <ChatComponent /> : <Intro />} />
           <Route path="/memoryGame" element={user ? <MemoryGame /> : <Intro />} />
           <Route path="/support" element={user ? <Support /> : <Intro />} />
-          <Route path='/aboutus' element={<AboutUs />}/>
+          <Route path='/aboutus' element={<AboutUs /> }/>
           <Route path="/addTest" element={user ? <QuestionForm /> : <Intro />} />
           <Route path="/choose" element={user ? <ChooseForTest /> : <Intro />} />
           <Route path="/tetris" element={user ? <TetrisGame/> : <Intro />} />
           <Route path="/settings" element={user ? <SettingsPlatform/> : <Intro />} />
-
-
         </Route>
       </Routes>
     </>

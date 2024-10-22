@@ -33,19 +33,25 @@
 }
 
 .support-p-text {
+    margin-top: 20px;
     text-align: center;
     letter-spacing: 0.5px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #396464;
 }
 
 .support{
-    display: block;
+    display: flex;
+    align-items: center;
+}
+
+.support-flex-box {
+    width: 350px;
 }
 
 .support-text{
-    max-width: 100%;
-    min-height: 300px;
+    width: 250px;
+    height: 100px;
     padding: 10px;
     margin-top: 15px;
 }
@@ -58,7 +64,7 @@
     padding: 10px;
 }
 
-textarea:focus {
+.support-text:focus {
     outline: none;
     border: none; /* Если нужно убрать именно border */
 }

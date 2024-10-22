@@ -61,7 +61,7 @@ const Sidebar: FC = () => {
           </NavLink>
           <NavLink to="/tetris" 
                    className={({ isActive }) => (isActive ? 'sidebar-active' : 'menu-item')}>
-            <i className="menu-icon fa-solid fa-layer-group"></i>
+            <i className="menu-icon fa-brands fa-unsplash"></i>
             {!isCollapsed && 'Tetris Game'}
           </NavLink>
 
@@ -74,7 +74,7 @@ const Sidebar: FC = () => {
           {!isCollapsed && 'Support'}
         </NavLink>
         <NavLink to="/settings" className={({ isActive }) => (isActive ? 'sidebar-active' : 'sidebar-footer-item')}>
-          <i className="sidebar-footer-icon fa-regular fa-circle-question"></i>
+          <i className="sidebar-footer-icon fa-solid fa-gear"></i>
           {!isCollapsed && 'Settings'}
         </NavLink>
 

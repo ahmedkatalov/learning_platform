@@ -2,7 +2,8 @@ import { FC, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../../redux/store";
-import { deleteQuestion } from "../../../redux/test/testSlise"; // Правильный импорт deleteQuestion
+import { deleteQuestion } from "../../../redux/test/testSlise";
+
 import "./Test.css";
 
 const Test: FC = () => {
@@ -14,7 +15,6 @@ const Test: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  // Функция для выбора ответа
   const handleAnswerSelection = (answerIndex: number) => {
     const updatedAnswers = [...userAnswers];
     updatedAnswers[currentQuestionIndex] = answerIndex;
@@ -25,12 +25,10 @@ const Test: FC = () => {
     navigate("/choose");
   };
 
-  // Пропустить вопрос
   const handleSkipQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => Math.min(prevIndex + 1, questions.length - 1));
   };
 
-  // Перейти к следующему вопросу или завершить тест
   const handleNextQuestion = () => {
     if (currentQuestionIndex === questions.length - 1) {
       setIsTestFinished(true);
@@ -39,14 +37,12 @@ const Test: FC = () => {
     }
   };
 
-  // Вернуться к предыдущему вопросу
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
     }
   };
 
-  // Подсчет результата
   const calculateResult = () => {
     let correctAnswers = 0;
     userAnswers.forEach((answer, index) => {
@@ -57,12 +53,10 @@ const Test: FC = () => {
     return correctAnswers;
   };
 
-  // Функция удаления теста
   const removeTest = (id: number) => {
     dispatch(deleteQuestion(id));
   };
 
-  // Рестарт теста (сброс всех состояний)
   const handleRestartTest = () => {
     setCurrentQuestionIndex(0);
     setUserAnswers(Array(questions.length).fill(-1));
@@ -71,7 +65,6 @@ const Test: FC = () => {
 
   return (
     <div className="test-container">
-      {/* Если вопросов нет */}
       {questions.length === 0 ? (
         <div className="test-content">
             <h2 className="test-heading-h2">The spanking is empty here..</h2> 
@@ -120,7 +113,6 @@ const Test: FC = () => {
           </div>
         </div>
       ) : (
-        /* Если тест завершен, показываем результаты и кнопку рестарта */
         <div className="test-result-box">
           <h2 className="test-result-text">
             Your Results: {calculateResult()} / {questions.length}

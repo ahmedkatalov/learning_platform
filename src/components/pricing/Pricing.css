@@ -16,7 +16,7 @@
     gap: 20px;
     margin: 30px 0 30px;
     padding: 10px 40px 10px 35px;
-    background-color: #fbf9ff;
+    background-color: #fcfbff;
     border: 1px solid #5a67d8;;
     border-radius: 55px;
   }
@@ -89,7 +89,12 @@
 
   .pricing-title-block {
     align-self: flex-start;
-    margin-left: 15px;
+    margin-left: 5px;
+    padding-left: 10px;
+    border-bottom: 1px solid #5a67d8bb;
+    border-radius: 5px;
+    width: 250px;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.1);
   }
 
   .pricing-plan {
@@ -119,11 +124,10 @@
   .pricing-start-btn {
     background-color: #fbfbff;
     color: #6C63FF;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border: 1px solid #6C63FF;
     padding: 0px 5px;
     border-radius: 5px;
-    font-size: 1rem;
   }
   
   .pricing-start-btn:hover {

@@ -1,5 +1,6 @@
 import {useNavigate } from "react-router-dom";
-import './ChooseForm.css'; // Import the CSS file
+
+import './ChooseForm.css';
 
 const ChooseForTest = () => {
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ const ChooseForTest = () => {
     <div className="choose-container">
 
 
-      {/* Добавляем кнопки */}
       <div className="button-container">
         <button onClick={handleTakeTest} className="t-btn">
           Start Test

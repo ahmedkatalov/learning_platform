@@ -1,0 +1,21 @@
+.contactus-container {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.contactus-h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #b25e5e;
+}
+
+.contactus-p {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #b25e5e;
+}

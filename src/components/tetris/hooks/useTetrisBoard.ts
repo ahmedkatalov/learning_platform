@@ -154,4 +154,3 @@ function boardReducer(state: BoardState, action: Action): BoardState {
   
     return newState;
   }
-  

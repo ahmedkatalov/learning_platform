@@ -1,4 +1,5 @@
 import { FC, useState, useRef, MouseEvent } from "react";
+import { useNavigate} from 'react-router-dom';
 import { auth } from "../../fireBase/fireStore";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import './SignInForm.css';
@@ -14,6 +15,7 @@ const SignInForm: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
 
   const [eyeStyle, setEyeStyle] = useState<StyleState>({
     left: { left: "0.7rem", top: "0.7rem" },
@@ -54,6 +56,7 @@ const SignInForm: FC = () => {
       await signInWithEmailAndPassword(auth, email, password);
       setEmail("");
       setPassword("");
+      navigate("./home");
     } catch (e: any) {
       setError(e.message);
     }

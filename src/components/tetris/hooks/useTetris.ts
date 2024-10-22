@@ -129,7 +129,7 @@ export function useTetris() {
 
     let isPressingLeft = false;
     let isPressingRight = false;
-    let moveIntervalID: number | undefined;
+    let moveIntervalID: undefined | ReturnType<typeof setTimeout> = undefined;
 
     const updateMovementInterval = () => {
       clearInterval(moveIntervalID);
@@ -138,7 +138,7 @@ export function useTetris() {
         isPressingLeft,
         isPressingRight,
       });
-      moveIntervalID = setInterval<number> (() => {
+      moveIntervalID = setInterval(() => {
         dispatchBoardState({
           type: 'move',
           isPressingLeft,

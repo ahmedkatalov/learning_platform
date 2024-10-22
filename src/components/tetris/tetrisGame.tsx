@@ -2,6 +2,7 @@ import Board from './game/Board';
 import { FC, useEffect } from 'react';
 import UpcomingBlocks from './game/UpcomingBlocks';
 import { useTetris } from './hooks/useTetris';
+
 import "./tetris.css"
 
 
@@ -12,14 +13,12 @@ const TetrisGame:FC=() => {
   useEffect(() => {
     const handleKeyDown = (event:KeyboardEvent) => {
       if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-        event.preventDefault(); // Блокирует прокрутку страницы
+        event.preventDefault();
       }
     };
 
-    // Добавляем обработчик при монтировании компонента
     document.addEventListener('keydown', handleKeyDown);
 
-    // Убираем обработчик при размонтировании компонента
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -27,7 +26,7 @@ const TetrisGame:FC=() => {
 
   return (
     <div className="app">
-      <h1>Tetris</h1>
+      <h1 className='tetris-app-title'>Tetris</h1>
       <Board currentBoard={board} />
       <div className="controls">
         <h2>Score: {score}</h2>
